@@ -24,9 +24,10 @@ jobs:
       - name: Build
         run: npm run build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./dist
+          overwrite: true   # ensures v4 allows replacing artifact
 
   deploy:
     needs: build
@@ -36,5 +37,3 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v1
-        with:
-          branch: main
